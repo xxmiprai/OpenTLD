@@ -670,9 +670,15 @@ int TLD::clusterBB(const vector<BoundingBox>& dbb,vector<int>& indexes){
       }
   }
   //2. Initialize disjoint clustering
- float L[c-1]; //Level
- int nodes[c-1][2];
- int belongs[c];
+ //float L[c-1]; //Level
+ //int nodes[c - 1][2];
+ //int belongs[c];
+ //modified for VS2013, ax@303, 20161019
+ float *L = new float[c - 1];
+ int **nodes = new int *[c - 1];
+ for (int i = 0; i < 2; i++)
+     nodes[i] = new int[c - 1];
+ int *belongs = new int[c];
  int m=c;
  for (int i=0;i<c;i++){
     belongs[i]=i;
